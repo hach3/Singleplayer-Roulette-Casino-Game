@@ -148,3 +148,267 @@ form input[type="submit"]:hover {
 #roulette-board button.roulette-black:hover {
   background-color: rgb(75, 110, 132);
 }
+
+
+/* WHEEL */
+#roulette {
+  min-height:500px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1024px) {
+  .wheel {
+    top: 650px;
+    left: 200px;
+  }
+
+  div.table {
+    left: 200px;
+    top: 350px;
+  }
+
+ /* div.h1 {
+    left: 200px;
+    top: 340px;
+  }
+
+  div.h2 {
+    left: 0px;
+    top: 340px;
+  }*/
+
+  /*div.throw {
+    top: 0px;
+    right: 0px;
+  }*/
+
+  div.outcome {
+    top: 820px;
+  }
+
+  .flex-container{
+    color: white;
+  }
+}
+
+.container {
+  display: flex;
+}
+
+.header {
+  position: relative;
+  background-size: contain;
+  margin: 0;
+  background-image: url(http://res.cloudinary.com/camcash17/image/upload/v1513014013/Casino-Dice-2_iafnnp.jpg);
+  background-position-y: 303px;
+  background-position-x: 304px;
+  width: 100%;
+  height: 150px;
+}
+
+.flex-container {
+  position: absolute;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.title {
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  width:400px;
+  height:100px;
+  margin: 0 auto;
+  font-size: 100px;
+  right: 30px;
+  font-family: 'Rye', cursive;
+}
+
+.directions {
+  position: relative;
+  width:450px;
+  height:50px;
+  margin: 5 auto;
+  font-size: 30px;
+  text-align: center;
+  color: white;
+  display: inline;
+}
+
+.restart {
+  position: absolute;
+  margin: 10px;
+  top: 100px;
+  border-radius: 20%;
+  font-size: 20px;
+  height: 75px;
+  width: 150px;
+  color: white;
+  background-color: black;
+  display: none;
+}
+
+.p2 {
+  position: relative;
+  text-align: center;
+  margin: 50px;
+  width: 350px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.name {
+  position: relative;
+  width: 250px;
+  height: 40px;
+  margin: 10px;
+  font-size: 20px;
+}
+
+.start {
+  position: relative;
+  margin: 10px;
+  border-radius: 20%;
+  font-size: 20px;
+  height: 100px;
+  width: 200px;
+  color: white;
+  background-color: black;
+  display: inline;
+}
+
+.outcome {
+  position: relative;
+  width:600px;
+  height:100px;
+  top: 300px;
+  font-size: 75px;
+  margin: 0 auto;
+  text-align: center;
+  display: none;
+  font-family: 'Rye', cursive;
+}
+
+.throw {
+  top: -40px;
+  right: 430px;
+  display: none;
+  position: relative;
+}
+
+.h1 {
+  position: relative;
+  width:300px;
+  height:50px;
+  margin: 0 auto;
+  background-size: cover;
+  font-size: 30px;
+  text-align: center;
+  top: 0px;
+  left: 305px;
+  font-weight: bold;
+  color: white;
+}
+
+.h2 {
+  position: relative;
+  width:300px;
+  height:50px;
+  margin: 0 auto;
+  background-size: cover;
+  font-size: 30px;
+  text-align: center;
+  top: 10px;
+  left: 305px;
+  font-weight: bold;
+  color: white;
+  display: none;
+}
+
+.wheel {
+  position: absolute;
+  display: none;
+  margin: 100px;
+  width: 380px;
+  height: 380px;
+  border:1px solid;
+  border-radius:50%;
+  background-size:cover;
+  background-image: url("http://res.cloudinary.com/camcash17/image/upload/v1512576896/roulette_wheel_f2zhdb.jpg");
+  animation-name: spin;
+  animation-duration: 7000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+.wrap {
+  position: absolute;
+  border:1px solid;
+  border-radius:50%;
+  width: 380px;
+  height: 380px;
+  background-size:cover;
+}
+
+.ball {
+  width:10px;
+  height:10px;
+  border:1px solid;
+  border-radius:50%;
+  margin-top: 30px;
+  margin-left: 90px;
+  background-size:cover;
+  background-color: white;
+}
+
+.table {
+  position: absolute;
+  display: none;
+  background: url(http://res.cloudinary.com/camcash17/image/upload/v1512620657/roulette_table_simp_glucc1.jpg);
+  margin: 100px 100px 100px -20px;
+  top: 250px;
+  left: 735px;
+  width:610px;
+  height:260px;
+  background-size:cover;
+  border: 5px solid;
+}
+
+.dozen {
+  display: flex;
+}
+
+.flex-item {
+  flex: 1 1;
+  display: flex;
+  border: 5px solid gray;
+  justify-content: space-around;
+  font-size: 100px;
+  height: 77px;
+  margin: 0;
+  transition: all 1s;
+}
+
+.flex-item:hover {
+  background-color: magenta;
+}
+
+@keyframes spin {
+    from { transform:rotate(0deg); }
+    to { transform:rotate(360deg); }
+}
+
+@keyframes ballDrop {
+  from { margin-top: 30px; }
+  to   { margin-top: 126px; }
+}
+
+@keyframes ballReset {
+  from { margin-top: 126px; }
+  to   { margin-top: 30px; }
+}
