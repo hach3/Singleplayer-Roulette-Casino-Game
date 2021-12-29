@@ -1,0 +1,25 @@
+{
+  "name": "singleplayer-roulette-casino-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hach3/Singleplayer-Roulette-Casino-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hach3/Singleplayer-Roulette-Casino-Game/issues"
+  },
+  "homepage": "https://github.com/hach3/Singleplayer-Roulette-Casino-Game#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "body-parser": "^1.19.1",
+    "express": "^4.17.2",
+    "path": "^0.12.7"
+  }
+}
