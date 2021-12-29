@@ -168,38 +168,6 @@ form input[type="submit"]:hover {
   justify-content: center;
 }
 
-@media screen and (max-width: 1024px) {
-  .wheel {
-    top: 650px;
-    left: 200px;
-  }
-
-  div.table {
-    left: 200px;
-    top: 350px;
-  }
-
-  div.outcome {
-    top: 820px;
-  }
-
-  .flex-container{
-    color: white;
-  }
-}
-
-.container {
-  display: flex;
-}
-
-.flex-container {
-  position: absolute;
-  flex-direction: column;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
 
 .wheel {
   position: absolute;
