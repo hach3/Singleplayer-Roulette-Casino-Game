@@ -28,19 +28,13 @@ app.get('/',function(req,res) {
 
 /* PLAY A GAME */
 app.post('/play', (req,res) => {
-  var bets = [{"amount":25,"type":"color","value":"red"}];
   postReq(environment.urlApi, {
     "id": "roulette",
     "authorization": environment.token,
-    "params" : {},
-    "bets": bets,
-    // "bets": [
-    //   {
-    //     "amount": parseFloat(req.body.bet),
-    //     "type": "default",
-    //     "value": parseFloat(req.body.number)
-    //   }
-    // ]
+    "params" : {
+      rtp: environment.rtp/100,
+    },
+    "bets": req.body.bets,
   }).then(function(respGame) {  
     res.status(respGame.status).json(respGame.data);
   })
