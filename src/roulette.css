@@ -1,0 +1,150 @@
+html {
+  width: 100%;
+  height: 100%;
+}
+body {
+  padding:0;
+  margin:0;
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: "proxima-nova",sans-serif;
+  font-size: 14px;
+}
+
+/* DARK THEME - Can be removed */
+
+label {
+  color: #b1bad3;
+}
+input[type="number"] {
+  background: #0f212e;
+  color: #FFF;
+}
+
+.controls {
+  background: #213743;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  color: #b1bad3;
+}
+.board {
+  background: #0f212e;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+
+.container {
+  display: flex;
+  height:calc(100% - 10px);
+  width: calc(100% - 10px);
+  min-width: 400px;
+  min-height: 300px;
+  /* border: 1px solid black; */
+  border-radius: 15px;
+}
+
+.controls {
+  width: 25%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+
+form .form-element {
+  display: flex;
+  flex-direction: column;
+}
+
+form input[type="submit"] {
+  width: 100%;
+  background: #1fff20;
+  border: none;
+  padding: 10px;
+  margin: 10px 0;
+}
+form input[type="submit"]:hover {
+  background: #00e701;
+}
+
+.token-values {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  margin:0;
+}
+.token-values li {
+  width:50px;
+  height: 45px;
+  background: blue;
+  margin-right:5px;
+  border-radius:50%;
+  cursor:pointer;
+
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.token-values li:hover {
+  background: red;
+}
+.board {
+  width:75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.roulette-board-numbers {
+  display: flex;
+  justify-content: center;
+}
+.roulette-board-column {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+#roulette-board button {
+  cursor: pointer;
+  color: #FFF;
+  border: none;
+  background-color: transparent;
+  min-width: 38px;
+  min-height: 38px;
+  box-shadow: inset 0 0 0 0.15em #2F4553;
+  border-radius: 0.25rem;
+}
+
+.zero {
+  height: 100%;
+}
+#roulette-board button.roulette-green {
+  background-color: #419e3f;
+  box-shadow: none;
+}
+#roulette-board button.roulette-green:hover {
+  background-color: rgb(105, 194, 103);
+}
+
+
+#roulette-board button.roulette-red {
+  background-color: #FE2247;  
+  box-shadow: none;
+}
+#roulette-board button.roulette-green:hover {
+  background-color: rgb(254, 110, 134);
+  
+}
+#roulette-board button.roulette-black {
+  background-color: #2F4553;
+  box-shadow: none;
+}
+#roulette-board button.roulette-black:hover {
+  background-color: rgb(75, 110, 132);
+}

@@ -1,1 +1,144 @@
-<p>Roulette</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="roulette.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="controls">
+        <p>Token value</p>
+        <ul class="token-values">
+          <li>1</li>
+          <li>10</li>
+          <li>100</li>
+          <li>1K</li>
+          <li>10K</li>
+          <li>100K</li>
+          <li>1M</li>
+          <li>10M</li>
+          <li>100M</li>
+          <li>1B</li>
+        </ul>
+        <form>
+          <div class="form-element">
+            <label for="amount-bet">Bet amount</label>
+            <input type="number" id="amount-bet" value="0.00" disabled/>
+          </div>
+          <div>
+            <input type="submit" value="Bet"/>
+          </div>
+        </form>
+      </div>
+      <div class="board">
+        <div id="roulette" style="display: flex; justify-content: center;">
+            <img src="http://pngimg.com/uploads/roulette/roulette_PNG55.png"/>
+        </div>
+        <div id="roulette-board">
+          <div class="roulette-board-numbers">
+            <div>
+              <button type="button" class="roulette-green zero">0</button>
+            </div>
+            
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">1</button>
+              <button type="button" class="roulette-black">2</button>
+              <button type="button" class="roulette-red">3</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">4</button>
+              <button type="button" class="roulette-red">5</button>
+              <button type="button" class="roulette-black">6</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">7</button>
+              <button type="button" class="roulette-black">8</button>
+              <button type="button" class="roulette-red">9</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">10</button>
+              <button type="button" class="roulette-red">11</button>
+              <button type="button" class="roulette-black">12</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">13</button>
+              <button type="button" class="roulette-black">14</button>
+              <button type="button" class="roulette-red">15</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">16</button>
+              <button type="button" class="roulette-red">17</button>
+              <button type="button" class="roulette-black">18</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">19</button>
+              <button type="button" class="roulette-black">20</button>
+              <button type="button" class="roulette-red">21</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">22</button>
+              <button type="button" class="roulette-red">23</button>
+              <button type="button" class="roulette-black">24</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">25</button>
+              <button type="button" class="roulette-black">26</button>
+              <button type="button" class="roulette-red">27</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">28</button>
+              <button type="button" class="roulette-red">29</button>
+              <button type="button" class="roulette-black">30</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-red">31</button>
+              <button type="button" class="roulette-black">32</button>
+              <button type="button" class="roulette-red">33</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button" class="roulette-black">34</button>
+              <button type="button" class="roulette-red">35</button>
+              <button type="button" class="roulette-black">36</button>
+            </div>
+
+            <div class="roulette-board-column">
+              <button type="button">2:1</button>
+              <button type="button">2:1</button>
+              <button type="button">2:1</button>
+            </div>
+          </div>
+          
+          <div>
+            <div style="display: flex;justify-content: center;">
+              <button type="button">1 to 12</button>
+              <button type="button">13 to 24</button>
+              <button type="button">25 to 36</button>
+            </div>
+          </div>
+          <div>
+            <div style="display: flex;justify-content: center;">
+              <button type="button">1 to 18</button>
+              <button type="button">Even</button>
+              <button type="button" class="roulette-red">Red</button>
+              <button type="button" class="roulette-black">Black</button>
+              <button type="button">Odd</button>
+              <button type="button">19 to 36</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="roulette.js"></script>
+  </body>
+</html>
