@@ -81,7 +81,12 @@ form input[type="submit"]:hover {
 .token-values li {
   width:50px;
   height: 45px;
-  background: blue;
+  /* background: blue; */
+
+  background-color: rgb(255, 206, 0);
+  background-image: url(/token.svg);
+  box-shadow: rgb(145 112 0) 0px 0.2em 0px 0px, rgb(255 255 255) 0px 0.1em 0px 0.3em;
+
   margin-right:5px;
   border-radius:50%;
   cursor:pointer;
@@ -91,8 +96,12 @@ form input[type="submit"]:hover {
   justify-content: center;
 }
 .token-values li:hover {
-  background: red;
+  background-color: red;
 }
+.token-values li.active {
+  background-color: red;
+}
+
 .board {
   width:75%;
   display: flex;

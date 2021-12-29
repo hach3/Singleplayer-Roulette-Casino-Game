@@ -60,7 +60,7 @@ class Selection {
       duration: 0,
       complete: function() {
         setTimeout(function() {
-          let rotation = degrees[winningNumber];
+          var rotation = degrees[winningNumber];
 
           ball.css("animation", "ballDrop 2s forwards ease-in-out");
 
@@ -106,4 +106,9 @@ jQuery(document).on('click', 'input[type="submit"]', function() {
   
 
   return false;
+});
+
+jQuery(document).on('click', '.token-values li', function() {
+  jQuery('.token-values li.active').removeClass('active');
+  jQuery(this).addClass('active');
 });
