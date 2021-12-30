@@ -6,7 +6,7 @@ body {
   padding:0;
   margin:0;
   width:100%;
-  height:100%;
+  min-height:100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,10 +44,13 @@ input[type="number"] {
   width: calc(100% - 10px);
   min-width: 400px;
   min-height: 300px;
-  /* border: 1px solid black; */
+  flex-direction: row;
   border-radius: 15px;
 }
 
+
+
+/* LEFT CONTROLS */
 .controls {
   width: 25%;
   padding: 15px;
@@ -102,18 +105,22 @@ form input[type="submit"]:hover {
   background-color: red;
 }
 
+/* GAME BOARD */
+
 .board {
   width:75%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
+  min-height: 730px;
 }
 
 .roulette-board-numbers {
   display: flex;
   justify-content: center;
 }
+
 .roulette-board-column {
   display: flex;
   flex-direction: column-reverse;
@@ -128,6 +135,23 @@ form input[type="submit"]:hover {
   min-height: 38px;
   box-shadow: inset 0 0 0 0.15em #2F4553;
   border-radius: 0.25rem;
+  position: relative;
+}
+.token-bet {
+  width: 25px;
+  height: 22.5px;
+  background-color: rgb(255, 206, 0);
+  background-image: url(/token.svg);
+  box-shadow: rgb(145 112 0) 0px 0.2em 0px 0px, rgb(255 255 255) 0px 0.1em 0px 0.3em;
+  margin-right: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  position:absolute;
+  top: calc(50% - 12.5px);
+  left: calc(50% - 11.25px);
+  display: none;
 }
 
 .zero {
@@ -160,6 +184,7 @@ form input[type="submit"]:hover {
 
 
 /* WHEEL */
+
 #roulette {
   min-height:500px;
   width: 100%;
@@ -172,7 +197,6 @@ form input[type="submit"]:hover {
 .wheel {
   position: absolute;
   display: block;
-  margin: 100px;
   width: 380px;
   height: 380px;
   border:1px solid;
@@ -237,4 +261,39 @@ form input[type="submit"]:hover {
 @keyframes ballReset {
   from { margin-top: 126px; }
   to   { margin-top: 30px; }
+}
+
+
+/* MOBILE */
+/* On screens that are 600px or less, set the background color to olive */
+@media screen and (max-width: 760px) {
+  body {
+    display: block;
+  }
+  .container {
+    flex-direction: column-reverse;
+  } 
+  .controls {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+  }
+  .board {
+    width: 100%;
+    border: none;
+    border-radius: 0;
+  }
+
+  .roulette-board-numbers {
+    flex-direction: column;
+  }
+  .zero {
+    width: 100%;
+  }
+  .roulette-board-column {
+    flex-direction: row;
+  }
+  .roulette-board-column button {
+    width: 33.33%;
+  }
 }

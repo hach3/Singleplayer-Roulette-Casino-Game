@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="stylesheet" href="roulette.css">
   </head>
   <body>
@@ -8,16 +9,16 @@
       <div class="controls">
         <p>Token value</p>
         <ul class="token-values">
-          <li>1</li>
-          <li>10</li>
-          <li>100</li>
-          <li>1K</li>
-          <li>10K</li>
-          <li>100K</li>
-          <li>1M</li>
-          <li>10M</li>
-          <li>100M</li>
-          <li>1B</li>
+          <li attr-amount="1">1</li>
+          <li attr-amount="10">10</li>
+          <li attr-amount="100">100</li>
+          <li attr-amount="1000">1K</li>
+          <li attr-amount="10000">10K</li>
+          <li attr-amount="100000">100K</li>
+          <li attr-amount="1000000">1M</li>
+          <li attr-amount="10000000">10M</li>
+          <li attr-amount="100000000">100M</li>
+          <li attr-amount="1000000000">1B</li>
         </ul>
         <form>
           <div class="form-element">
@@ -30,7 +31,7 @@
         </form>
       </div>
       <div class="board">
-        <div style="width:100%;min-height:500px;">
+        <div>
           <div class="roulette" id="roulette">
             <div class="wheel" id="wheel">
               <div class="wrap" id="wrap">
@@ -42,103 +43,103 @@
         <div id="roulette-board">
           <div class="roulette-board-numbers">
             <div>
-              <button type="button" class="roulette-green zero">0</button>
+              <button type="button" class="roulette-green zero" attr-value="0" attr-type="number">0<div class="token-bet"></div></button>
             </div>
             
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">1</button>
-              <button type="button" class="roulette-black">2</button>
-              <button type="button" class="roulette-red">3</button>
+              <button type="button" class="roulette-red" attr-value="1" attr-type="number">1<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="2" attr-type="number">2<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="3" attr-type="number">3<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">4</button>
-              <button type="button" class="roulette-red">5</button>
-              <button type="button" class="roulette-black">6</button>
+              <button type="button" class="roulette-black" attr-value="4" attr-type="number">4<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="5" attr-type="number">5<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="6" attr-type="number">6<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">7</button>
-              <button type="button" class="roulette-black">8</button>
-              <button type="button" class="roulette-red">9</button>
+              <button type="button" class="roulette-red" attr-value="7" attr-type="number">7<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="8" attr-type="number">8<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="9" attr-type="number">9<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">10</button>
-              <button type="button" class="roulette-red">11</button>
-              <button type="button" class="roulette-black">12</button>
+              <button type="button" class="roulette-black" attr-value="10" attr-type="number">10<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="11" attr-type="number">11<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="12" attr-type="number">12<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">13</button>
-              <button type="button" class="roulette-black">14</button>
-              <button type="button" class="roulette-red">15</button>
+              <button type="button" class="roulette-red" attr-value="13" attr-type="number">13<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="14" attr-type="number">14<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="15" attr-type="number">15<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">16</button>
-              <button type="button" class="roulette-red">17</button>
-              <button type="button" class="roulette-black">18</button>
+              <button type="button" class="roulette-black" attr-value="16" attr-type="number">16<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="17" attr-type="number">17<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="18" attr-type="number">18<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">19</button>
-              <button type="button" class="roulette-black">20</button>
-              <button type="button" class="roulette-red">21</button>
+              <button type="button" class="roulette-red" attr-value="19" attr-type="number">19<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="20" attr-type="number">20<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="21" attr-type="number">21<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">22</button>
-              <button type="button" class="roulette-red">23</button>
-              <button type="button" class="roulette-black">24</button>
+              <button type="button" class="roulette-black" attr-value="22" attr-type="number">22<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="23" attr-type="number">23<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="24" attr-type="number">24<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">25</button>
-              <button type="button" class="roulette-black">26</button>
-              <button type="button" class="roulette-red">27</button>
+              <button type="button" class="roulette-red" attr-value="25" attr-type="number">25<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="26" attr-type="number">26<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="27" attr-type="number">27<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">28</button>
-              <button type="button" class="roulette-red">29</button>
-              <button type="button" class="roulette-black">30</button>
+              <button type="button" class="roulette-black" attr-value="28" attr-type="number">28<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="29" attr-type="number">29<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="30" attr-type="number">30<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-red">31</button>
-              <button type="button" class="roulette-black">32</button>
-              <button type="button" class="roulette-red">33</button>
+              <button type="button" class="roulette-red" attr-value="31" attr-type="number">31<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="32" attr-type="number">32<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="33" attr-type="number">33<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button" class="roulette-black">34</button>
-              <button type="button" class="roulette-red">35</button>
-              <button type="button" class="roulette-black">36</button>
+              <button type="button" class="roulette-black" attr-value="34" attr-type="number">34<div class="token-bet"></div></button>
+              <button type="button" class="roulette-red" attr-value="35" attr-type="number">35<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="36" attr-type="number">36<div class="token-bet"></div></button>
             </div>
 
             <div class="roulette-board-column">
-              <button type="button">2:1</button>
-              <button type="button">2:1</button>
-              <button type="button">2:1</button>
+              <button type="button" attr-value="1-4-7-10-13-16-19-22-25-28-31-34" attr-type="multiple-pick">2:1</button>
+              <button type="button" attr-value="2-5-8-11-14-17-20-23-26-29-32-35" attr-type="multiple-pick">2:1</button>
+              <button type="button" attr-value="3-6-9-12-15-18-21-24-27-30-33-36" attr-type="multiple-pick">2:1</button>
             </div>
           </div>
           
           <div>
             <div style="display: flex;justify-content: center;">
-              <button type="button">1 to 12</button>
-              <button type="button">13 to 24</button>
-              <button type="button">25 to 36</button>
+              <button type="button" attr-value="1-12" attr-type="range">1 to 12<div class="token-bet"></div></button>
+              <button type="button" attr-value="13-24" attr-type="range">13 to 24<div class="token-bet"></div></button>
+              <button type="button" attr-value="25-36" attr-type="range">25 to 36<div class="token-bet"></div></button>
             </div>
           </div>
           <div>
             <div style="display: flex;justify-content: center;">
-              <button type="button">1 to 18</button>
-              <button type="button">Even</button>
-              <button type="button" class="roulette-red">Red</button>
-              <button type="button" class="roulette-black">Black</button>
-              <button type="button">Odd</button>
-              <button type="button">19 to 36</button>
+              <button type="button" attr-value="1-18" attr-type="range">1 to 18<div class="token-bet"></div></button>
+              <button type="button" attr-value="2-4-6-8-10-12-14-16-18-20-22-24-26-28-30-32-34-36" attr-type="multiple-pick">Even</button>
+              <button type="button" class="roulette-red" attr-value="red" attr-type="color">Red<div class="token-bet"></div></button>
+              <button type="button" class="roulette-black" attr-value="black" attr-type="color">Black<div class="token-bet"></div></button>
+              <button type="button" attr-value="1-3-5-7-9-11-13-15-17-19-21-23-25-27-29-31-33-35" attr-type="multiple-pick">Odd</button>
+              <button type="button" attr-value="19-36" attr-type="range">19 to 36<div class="token-bet"></div></button>
             </div>
           </div>
         </div>

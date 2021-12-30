@@ -1,12 +1,12 @@
-const ball = $(".ball");
-const wrap = $(".wrap");
+var ball = $(".ball");
+var wrap = $(".wrap");
 var isPlaying = false;
-var bets = [
-  {"amount":25,"type":"color","value":"red"}
-];
+var bets = [];
+var tokenValue = null;
+var amountBet = 0;
 
 //designate each number on the roulette wheel with a specific degree between 720-1080
-const degrees = {
+var degrees = {
   7: 720,
   28: 729,
   12: 738,
@@ -71,11 +71,13 @@ class Selection {
             duration: 5000,
             complete: function() {
               isPlaying = false;
+              amountBet = 0;
+              bets = [];
+              jQuery('#amount-bet').val(amountBet);
+              jQuery('.token-bet').text('').css('display', 'none');
             }
           });
-        }, 500);
-        
-
+        }, 200);
       }
     });    
   }
@@ -85,6 +87,7 @@ const game = new Selection();
 
 jQuery(document).on('click', 'input[type="submit"]', function() {
   if(isPlaying) return false;
+  if(bets.length == 0) return false;
 
   isPlaying = true;
 
@@ -108,7 +111,69 @@ jQuery(document).on('click', 'input[type="submit"]', function() {
   return false;
 });
 
+/* PICK THE TOKEN VALUE */
+
 jQuery(document).on('click', '.token-values li', function() {
   jQuery('.token-values li.active').removeClass('active');
   jQuery(this).addClass('active');
+  tokenValue = jQuery(this).attr('attr-amount');
+  tokenValue = parseInt(tokenValue);
+});
+
+/* Click on board number = BET */
+
+jQuery(document).on('click', '#roulette-board button', function() {
+  if(tokenValue ==  null) return;
+
+  var valueBet = jQuery(this).attr('attr-value');
+  var typeBet = jQuery(this).attr('attr-type');
+  var totalBet = tokenValue;
+  
+  if(valueBet == null || typeBet == null) return;
+  
+  switch(typeBet) {
+    case "multiple-pick":
+      var numbers = valueBet.split('-');
+      for(var y = 0; y < numbers.length; ++y) {
+        var found = false;
+        for(var i = 0; i < bets.length; ++i) {
+          if(bets[i].type == "number" && bets[i].value == numbers[y]) {
+            //Found it => Add the amount selected to bet
+            bets[i].amount += tokenValue;
+            found = true;
+            totalBet = bets[i].amount;
+            amountBet += tokenValue;            
+            break;
+          }
+        }
+        if(!found) {
+          amountBet += tokenValue;
+          bets.push({value: numbers[y], type: "number", amount: tokenValue});
+        }
+        jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text(totalBet).css('display', 'flex');
+      }
+    break;
+    default:
+      //Check if bet is already selected
+      var found = false;
+      for(var i = 0; i < bets.length; ++i) {
+        if(bets[i].type == typeBet && bets[i].value == valueBet) {
+          //Found it => Add the amount selected to bet
+          bets[i].amount += tokenValue;
+          found = true;
+          totalBet = bets[i].amount;
+          amountBet += tokenValue;
+          break;
+        }
+      }
+      if(!found) {
+        amountBet += tokenValue;
+        bets.push({value: valueBet, type: typeBet, amount: tokenValue});
+      }
+      jQuery(this).find('.token-bet').text(totalBet).css('display', 'flex');
+    break;
+  }
+
+  jQuery('#amount-bet').val(amountBet);
+  console.log('BETS', bets);
 });
