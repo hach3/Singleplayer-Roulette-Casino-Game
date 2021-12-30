@@ -182,6 +182,18 @@ form input[type="submit"]:hover {
   background-color: rgb(75, 110, 132);
 }
 
+.board-clean-controls {
+  margin: auto;
+  display: flex;
+}
+
+.board-clean-controls span {
+  color: #FFF;
+  display: block;
+  padding: 10px;
+  cursor: pointer;
+
+}
 
 /* WHEEL */
 

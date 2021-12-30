@@ -4,6 +4,7 @@ var isPlaying = false;
 var bets = [];
 var tokenValue = null;
 var amountBet = 0;
+var actions = [];
 
 //designate each number on the roulette wheel with a specific degree between 720-1080
 var degrees = {
@@ -51,7 +52,6 @@ class Selection {
   }
 
   roll(winningNumber) {
-    console.log('winningNumber', winningNumber);
     ball.css("animation", "ballReset 0s forwards ease-in-out");
     wrap.animate({ $blah: 0}, {
       step: function(now, fx) {
@@ -113,16 +113,18 @@ jQuery(document).on('click', '#roulette-board button', function() {
   switch(typeBet) {
     case "multiple-pick":
       var numbers = valueBet.split('-');
+      actions.push({value: valueBet, type: "multiple-pick", amount: tokenValue});
+
       for(var y = 0; y < numbers.length; ++y) {
         var found = isInBets("number", numbers[y]);
         if(found === false) {
           amountBet += tokenValue;
-          bets.push({value: numbers[y], type: "number", amount: tokenValue});
+          bets.push({value: numbers[y], type: "number", amount: tokenValue});          
         }
         else {
           bets[found].amount += tokenValue;
           totalBet = bets[found].amount;
-          amountBet += tokenValue;          
+          amountBet += tokenValue;         
         }
         jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text(getTokenValue(totalBet)).css('display', 'flex');
       }
@@ -130,7 +132,8 @@ jQuery(document).on('click', '#roulette-board button', function() {
     default:
       //Check if bet is already selected
       var found = isInBets(typeBet, valueBet);
-      console.log('found', found)
+      actions.push({value: valueBet, type: typeBet, amount: tokenValue, item: jQuery(this)});
+
       if(found === false) {
         amountBet += tokenValue;
         bets.push({value: valueBet, type: typeBet, amount: tokenValue});
@@ -138,13 +141,62 @@ jQuery(document).on('click', '#roulette-board button', function() {
       else {
         bets[found].amount += tokenValue;
         totalBet = bets[found].amount;
-        amountBet += tokenValue;
+        amountBet += tokenValue;        
       }
+
       jQuery(this).find('.token-bet').text(getTokenValue(totalBet)).css('display', 'flex');
     break;
   }
 
   setInputBetAmount(amountBet);
+});
+
+/* RESET BETS */
+jQuery(document).on('click', '.reset-board', function() {
+  reset();
+});
+
+/* CANCEL LAST BET */
+jQuery(document).on('click', '.cancel-board', function() {
+  if(actions.length == 0) return;
+
+  var lastAction = actions[actions.length - 1];
+  switch(lastAction.type) {
+    case "multiple-pick":
+      var numbers = lastAction.value.split('-');
+
+      for(var y = 0; y < numbers.length; ++y) {
+        var found = isInBets("number", numbers[y]);
+        if(found !== false) {
+          bets[found].amount -= lastAction.amount;
+          amountBet -= lastAction.amount;
+          if(bets[found].amount <= 0) {
+            jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text('').css('display', 'none');
+          }
+          else {
+            jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text(getTokenValue(bets[found].amount)).css('display', 'flex');
+          }
+        }
+      }
+      setInputBetAmount(amountBet);
+      actions.pop();
+    break;
+    default:
+      var found = isInBets(lastAction.type, lastAction.value);
+      if(found !== false) {
+        bets[found].amount -= lastAction.amount;
+        amountBet -= lastAction.amount;
+        if(bets[found].amount <= 0) {
+          lastAction.item.find('.token-bet').text('').css('display', 'none');
+        }
+        else {
+          lastAction.item.find('.token-bet').text(getTokenValue(bets[found].amount)).css('display', 'flex');
+        }
+        setInputBetAmount(amountBet);
+        actions.pop();
+      }
+    break;
+  }
 });
 
 function play() {
@@ -171,6 +223,7 @@ function reset() {
   isPlaying = false;
   amountBet = 0;
   bets = [];
+  actions = [];
   setInputBetAmount(amountBet);
   jQuery('.token-bet').text('').css('display', 'none');
 }
