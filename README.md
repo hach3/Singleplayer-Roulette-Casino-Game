@@ -13,7 +13,7 @@ Demo : https://roulette.embedgaming.com/
 * npm i
 * Set your API Key in environment.js
 * node index
-* Visit http://localhost:8081
+* Visit http://localhost:8082
 
 ### Requirements
 
