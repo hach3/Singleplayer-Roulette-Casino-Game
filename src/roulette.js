@@ -70,11 +70,7 @@ class Selection {
             }, 
             duration: 5000,
             complete: function() {
-              isPlaying = false;
-              amountBet = 0;
-              bets = [];
-              jQuery('#amount-bet').val(amountBet);
-              jQuery('.token-bet').text('').css('display', 'none');
+              reset();
             }
           });
         }, 200);
@@ -89,27 +85,10 @@ jQuery(document).on('click', 'input[type="submit"]', function() {
   if(isPlaying) return false;
   if(bets.length == 0) return false;
 
-  isPlaying = true;
-
-  $.ajax({
-    type: "POST",
-    url: "/play",
-    data: {          
-      bets: bets
-    },
-    success: function(data) {
-      if(data && data.result && data.result.number_random != null) {
-        game.roll(data.result.number_random);
-      }      
-    },
-    error: function(err) {
-      console.log('ERR', err);
-    },
-  });
-  
-
+  play();
   return false;
 });
+
 
 /* PICK THE TOKEN VALUE */
 
@@ -135,45 +114,91 @@ jQuery(document).on('click', '#roulette-board button', function() {
     case "multiple-pick":
       var numbers = valueBet.split('-');
       for(var y = 0; y < numbers.length; ++y) {
-        var found = false;
-        for(var i = 0; i < bets.length; ++i) {
-          if(bets[i].type == "number" && bets[i].value == numbers[y]) {
-            //Found it => Add the amount selected to bet
-            bets[i].amount += tokenValue;
-            found = true;
-            totalBet = bets[i].amount;
-            amountBet += tokenValue;            
-            break;
-          }
-        }
-        if(!found) {
+        var found = isInBets("number", numbers[y]);
+        if(found === false) {
           amountBet += tokenValue;
           bets.push({value: numbers[y], type: "number", amount: tokenValue});
         }
-        jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text(totalBet).css('display', 'flex');
+        else {
+          bets[found].amount += tokenValue;
+          totalBet = bets[found].amount;
+          amountBet += tokenValue;          
+        }
+        jQuery('#roulette-board button[attr-value="' + numbers[y] +'"] .token-bet').text(getTokenValue(totalBet)).css('display', 'flex');
       }
     break;
     default:
       //Check if bet is already selected
-      var found = false;
-      for(var i = 0; i < bets.length; ++i) {
-        if(bets[i].type == typeBet && bets[i].value == valueBet) {
-          //Found it => Add the amount selected to bet
-          bets[i].amount += tokenValue;
-          found = true;
-          totalBet = bets[i].amount;
-          amountBet += tokenValue;
-          break;
-        }
-      }
-      if(!found) {
+      var found = isInBets(typeBet, valueBet);
+      console.log('found', found)
+      if(found === false) {
         amountBet += tokenValue;
         bets.push({value: valueBet, type: typeBet, amount: tokenValue});
       }
-      jQuery(this).find('.token-bet').text(totalBet).css('display', 'flex');
+      else {
+        bets[found].amount += tokenValue;
+        totalBet = bets[found].amount;
+        amountBet += tokenValue;
+      }
+      jQuery(this).find('.token-bet').text(getTokenValue(totalBet)).css('display', 'flex');
     break;
   }
 
-  jQuery('#amount-bet').val(amountBet);
-  console.log('BETS', bets);
+  setInputBetAmount(amountBet);
 });
+
+function play() {
+  isPlaying = true;
+
+  $.ajax({
+    type: "POST",
+    url: "/play",
+    data: {          
+      bets: bets
+    },
+    success: function(data) {
+      if(data && data.result && data.result.number_random != null) {
+        game.roll(data.result.number_random);
+      }      
+    },
+    error: function(err) {
+      console.log('ERR', err);
+    },
+  });
+}
+
+function reset() {
+  isPlaying = false;
+  amountBet = 0;
+  bets = [];
+  setInputBetAmount(amountBet);
+  jQuery('.token-bet').text('').css('display', 'none');
+}
+
+function setInputBetAmount(_amount) {
+  jQuery('#amount-bet').val(_amount);
+}
+
+function isInBets(type, value) {
+  for(var i = 0; i < bets.length; ++i) {
+    if(bets[i].type == type && bets[i].value == value) {
+      return i;
+    }
+  }
+  return false;
+}
+
+function getTokenValue(_token) {
+  if (_token < 1000) {
+    return _token.toString();
+  }
+  else if (_token < 10000000) {
+    return _token / 1000 + 'K';
+  }
+  else if (_token < 1000000000) {
+    return _token / 1000000 + 'M';
+  }
+  else {
+    return _token / 1000000000 + 'B';
+  }
+}
